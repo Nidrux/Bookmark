@@ -3,6 +3,7 @@ const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
 const { readdirSync } = require("fs");
 const path = require("path");
+const logger = require("./logger");
 module.exports = (client) => {
     const commands = [];
     const commandFiles = readdirSync(path.join(__dirname, "../commands/")).filter((file) =>
@@ -22,7 +23,7 @@ module.exports = (client) => {
                 await rest.put(Routes.applicationCommands(CLIENT_ID), {
                 body: commands,
             });
-            console.log("Successfully registered commands globally");
+            logger.info("Successfully registered commands globally");
             } else {
                 await rest.put(
                 Routes.applicationGuildCommands(CLIENT_ID, process.env.GUILD_ID),
@@ -30,10 +31,10 @@ module.exports = (client) => {
                         body: commands,
                     }
                 );
-                console.log("Successfully registered commands locally");
+                logger.info("Successfully registered commands locally");
             }
         } catch (err) {
-            if (err) console.error(err);
+            if (err) logger.error(err);
         }
     })();
 }
