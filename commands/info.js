@@ -10,7 +10,6 @@ module.exports = {
     .setDescription('Get information about the bot and the system')
     .setDefaultPermission(false),
   async execute(interaction, client) {
-    if(interaction.user.id !== "881032853234806784") return logger.warning(`user:${interaction.user.username}:${interaction.user.id} used command /info`)
     logger.info(`user:${interaction.user.username}:${interaction.user.id} used command /info`)
     let stats = await getStatistics(client);
     const embed = new MessageEmbed()  
