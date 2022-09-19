@@ -7,3 +7,6 @@ module.exports = client;
 client.commands = new Discord.Collection();
 require("./init.handler.js")(client)
 client.login(token);
+
+
+console.log("test")
