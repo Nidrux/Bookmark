@@ -1,2 +1,1 @@
-# Bookmark
-Bookmark bot
+https://discord.com/api/oauth2/authorize?client_id=910207197382864946&permissions=3072&scope=bot

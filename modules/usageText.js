@@ -1,4 +1,4 @@
-const {config} = require("../dc.config");
+const {config} = require("../config/dc.config");
 const usageText = () => {
     return `Bookmark works with reactions. 
     React to a message with the emote "${config.activeEmote}" to save a message/attachment as a bookmark. Bookmark will send you a dm with a link to the original message and attachements if there are any.
