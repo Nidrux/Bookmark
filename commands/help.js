@@ -1,13 +1,13 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed } = require("discord.js");
 const {usageText} = require("../modules/usageText");
-const logger = require("../modules/logger");
+const {logger} = require("../modules/log.handler");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("help")
     .setDescription('Get more info about "Bookmark" and how you can use it'),
   async execute(interaction, client) {
-    logger.info(`user:${interaction.user.username}:${interaction.user.id} used command /help`)
+      
     const embed = new MessageEmbed()  
     .setColor("#ffae01")
     .setTitle("🔖 Bookmark help")
@@ -23,5 +23,7 @@ module.exports = {
     await interaction.reply({
       embeds: [embed]
     });
+
+    logger(`${this.data.name} command used by ${interaction.user.id} (${interaction.user.username})`, "info")
   },
 };

@@ -1,14 +1,13 @@
-const {config} = require("../dc.config");
-const logger = require("../modules/logger");
+const {config} = require("../config/dc.config");
+const {logger} = require("../modules/log.handler");
 module.exports = (client) => {
-    console.log(`online`); // DO NOT REMOVE -> SET DEAMON STATE TO RUNNING;
+    logger(`${client.user.username} online`,"info");
     import('../modules/setActivity.js')
     .then(({setActivity}) => {
         setActivity(client, config.activity.type, config.activity.desc);
-        logger.info("Activity set...")
     })
     .catch(error => {
-        logger.error(error);
+        logger(error,"error");
     });
     require("../modules/loadCommands")(client);
 }
