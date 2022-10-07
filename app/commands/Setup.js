@@ -8,6 +8,7 @@ module.exports = {
     .setDescription('Enable custom emojies on your server.'),
   async execute(interaction) {
     logger(`${this.data.name} command used by ${interaction.user.id} (${interaction.user.username})`, "info")
+    if(!interaction.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return;
     GuildEmote.findOne({guildID: interaction.guild.id}, (error, docs) => {
         if(error) return (
             logger(error, "error"), 
