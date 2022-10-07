@@ -25,7 +25,7 @@ module.exports = async (m,u) => {
                 let content = m.message.content
                 embed.addField("Content", content.substring(0,500) + "...");
             }
-            if( m.message.channel.nsfw) {
+            if( m.message.channel.nsfw && attachments) {
                 embed.setFooter({text:"NSFW DETECTED! Post is automaticly blurred", iconURL:"https://cdn.discordapp.com/attachments/955172802246369283/955192318376419328/warning.png"})
             }
             try {

@@ -2,6 +2,7 @@ const { SlashCommandBuilder } = require("@discordjs/builders");
 const {logger} = require("../modules/log.handler");
 const GuildEmote = require("../Schemas/emoji.schema");
 const convertEmote = require("../modules/emote/convertEmote");
+const { Permissions } = require("discord.js");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("setup")
