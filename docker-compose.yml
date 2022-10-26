@@ -5,7 +5,7 @@ services:
     restart: always
     environment:
       # !! FILL IN BEFORE BUILDING AND RUNNING CONTAINERS !!
-      - TOKEN=OTU1MTk4NDM0NTMxNDkxODkx.GUqb1G.vbs3nte3hBSm-RRqXYpxYwca9_xio2IWVKbAk8
+      - TOKEN=
       - STATUS=DEVELOPMENT
       - GUILD_ID=973562496763953152
       - MONGODB_URI=mongodb://admin:root@mongodb:27017/bookmark?authSource=admin
