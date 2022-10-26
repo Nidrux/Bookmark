@@ -10,6 +10,7 @@ const client = new Client({intents: [
 const token = process.env.TOKEN || null;
 module.exports = client;
 client.commands = new Collection();
+client.buttons = new Collection();
 const mongoose = require("mongoose");
 try {
     mongoose.connect(process.env.MONGODB_URI).then(() => {

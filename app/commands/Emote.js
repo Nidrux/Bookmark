@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const {logger} = require("../modules/log.handler");
 const updateEmote = require("../modules/emote/updateEmote");
+const { Permissions } = require("discord.js");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("emote")
@@ -16,6 +17,7 @@ module.exports = {
           .setDescription('Reset your emote to the default setting'))
   ,async execute(interaction, client) {
     logger(`${this.data.name} command used by ${interaction.user.id} (${interaction.user.username})`, "info");
+    if(!interaction.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return;
     switch(interaction.options["_subcommand"]) {
       case "set":
             let emote = interaction.options["_hoistedOptions"][0].value;
