@@ -21,6 +21,6 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_USERNAME=root
     volumes:
-      - mongodb_data_container:/data/db
+        - mongodb_data_container:/data/db
 volumes:
-  - mongodb_data_container
+    - mongodb_data_container
