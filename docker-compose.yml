@@ -1,15 +1,14 @@
 version: '3.8'
 services:
   bot:
-    image: node:latest
-    build:
+    image: node:16.18-alpine3.16
     restart: always
     environment:
       # !! FILL IN BEFORE BUILDING AND RUNNING CONTAINERS !!
-      - TOKEN=<fill in token>
-      - STATUS=PRODUCTION
-      - GUILD_ID=<fill in guild id>
-      - MONGODB_URI=mongodb://bookmark:admin:root@mongo:27017?
+      - TOKEN=OTU1MTk4NDM0NTMxNDkxODkx.GUqb1G.vbs3nte3hBSm-RRqXYpxYwca9_xio2IWVKbAk8
+      - STATUS=DEVELOPMENT
+      - GUILD_ID=973562496763953152
+      - MONGODB_URI=mongodb://admin:root@mongodb:27017/bookmark?authSource=admin
     depends_on:
       - mongodb
   mongodb:
