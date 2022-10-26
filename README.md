@@ -3,15 +3,6 @@
 ## Setup
 
 ## Docker:
-
-1. Build an image from this repo.<br>
-   `docker build -t Bookmark:latest https://github.com/Nidrux/Bookmark#prod`
-2. Initiate a container that runs in the background with the newly build image.<br>
-   `docker run -d --name Bookmark Bookmark:latest`
-3. [Setup a container for mongoDB.](https://www.linode.com/docs/guides/set-up-mongodb-on-docker/)
-
-4. open the .env file and fill in all the missing values.<br>
-
 ## Enviroment file:
 
 Your enviroment file needs to contain the following parameters in order for it to work.
