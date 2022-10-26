@@ -1,9 +1,11 @@
-version: '1.0'
+version: '3.8'
 services:
   bot:
     image: node:latest
-    build: 
+    build:
+    restart: always
     environment:
+      # !! FILL IN BEFORE BUILDING AND RUNNING CONTAINERS !!
       - TOKEN=<fill in token>
       - STATUS=PRODUCTION
       - GUILD_ID=<fill in guild id>
@@ -12,6 +14,7 @@ services:
       - mongodb
   mongodb:
     image: mongo:latest
+    restart: always
     environment:
       # You can change the credentials bellow. 
       # If so, make sure to change the connection string (MONGODB_URI) to the new credentials
@@ -20,4 +23,4 @@ services:
     volumes:
       - mongodb_data_container:/data/db
 volumes:
-  mongodb_data_container
+  - mongodb_data_container
