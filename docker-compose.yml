@@ -1,0 +1,23 @@
+version: '1.0'
+services:
+  bot:
+    image: node:latest
+    build: 
+    environment:
+      - TOKEN=<fill in token>
+      - STATUS=PRODUCTION
+      - GUILD_ID=<fill in guild id>
+      - MONGODB_URI=mongodb://bookmark:admin:root@mongo:27017?
+    depends_on:
+      - mongodb
+  mongodb:
+    image: mongo:latest
+    environment:
+      # You can change the credentials bellow. 
+      # If so, make sure to change the connection string (MONGODB_URI) to the new credentials
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_USERNAME=root
+    volumes:
+      - mongodb_data_container:/data/db
+volumes:
+  mongodb_data_container
