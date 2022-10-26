@@ -1,26 +1,23 @@
 version: '3'
-services:
-  bot:
-    image: bot
-    restart: always
-    build: https://raw.githubusercontent.com/Nidrux/Bookmark/main/app/Dockerfile
-    environment:
-      # !! FILL IN BEFORE BUILDING AND RUNNING CONTAINERS !!
+services: 
+  bot: 
+    build: "https://raw.githubusercontent.com/Nidrux/Bookmark/main/app/Dockerfile"
+    depends_on: 
+      - mongodb
+    environment: 
       - TOKEN=
       - STATUS=DEVELOPMENT
       - GUILD_ID=973562496763953152
-      - MONGODB_URI=mongodb://admin:root@mongodb:27017/bookmark?authSource=admin
-    depends_on:
-      - mongodb
-  mongodb:
-    image: mongo:latest
+      - "MONGODB_URI=mongodb://admin:root@mongodb:27017/bookmark?authSource=admin"
+    image: bot
     restart: always
-    environment:
-      # You can change the credentials bellow. 
-      # If so, make sure to change the connection string (MONGODB_URI) to the new credentials
+  mongodb: 
+    environment: 
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_USERNAME=root
-    volumes:
-        - mongodb_data_container:/data/db
-volumes:
-    - mongodb_data_container
+    image: "mongo:latest"
+    restart: always
+    volumes: 
+      - "mongodb_data_container:/data/db"
+volumes: 
+  - mongodb_data_container
