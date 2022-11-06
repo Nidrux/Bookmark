@@ -1,23 +1,38 @@
 version: '3'
-services: 
-  bot: 
-    build: https://raw.githubusercontent.com/Nidrux/Bookmark/main/app/Dockerfile
-    depends_on: 
+services:
+  # Create a bookmark bot instance
+  bookmark:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    depends_on:
       - mongodb
-    environment: 
-      - TOKEN=
-      - STATUS=DEVELOPMENT
-      - GUILD_ID=973562496763953152
-      - MONGODB_URI=mongodb://admin:root@mongodb:27017/bookmark?authSource=admin
-    image: bot
+    environment:
+      TOKEN: 
+      STATUS: DEVELOPMENT
+      GUILD_ID: 973562496763953200
+      MONGODB_URI: mongodb://admin:root@mongodb:27017/bookmark?authSource=admin
     restart: always
-  mongodb: 
-    environment: 
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_USERNAME=root
+    networks:
+      - bookmark_network
+  # Create mongodb instance
+  mongodb:
+    environment:
+      #   Credentials bellow are used to login to the database, 
+      #   if you change these make sure to also update the link up above
+      #   (mongodb://admin:root@mongodb:27017/bookmark?authSource=admin)
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: bookmark
     image: "mongo:latest"
     restart: always
-    volumes: 
+    volumes:
       - mongodb_data_container:/data/db
-volumes: 
-  - mongodb_data_container
+    networks:
+      - bookmark_network
+volumes:
+  mongodb_data_container:
+    driver: local
+networks:
+  bookmark_network:
+    driver: bridge
