@@ -20,7 +20,7 @@ Optional:
 # View active containers
 docker-compose ps
 # View logs of the whole docker network:
-docker-compse logs -t -f
+docker-compose logs -t -f
 # View logs of a specific container:
 docker logs -t -f CONTAINER_NAME
 ```
