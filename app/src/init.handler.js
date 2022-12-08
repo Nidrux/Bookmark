@@ -1,6 +1,6 @@
 const {readdir} = require("fs");
 module.exports = (client) => {
-    readdir("./app/events/", (err, files) => {
+    readdir("./src/events/", (err, files) => {
         if (err) return console.error(err);      
         files.forEach((file) => {
             const event = require(`./events/${file}`);
