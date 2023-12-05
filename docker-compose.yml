@@ -23,7 +23,7 @@ services:
       #   (mongodb://admin:root@mongodb:27017/bookmark?authSource=admin)
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
-      MONGO_INITDB_DATABASE: bookmark
+      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
     image: "mongo:latest"
     restart: always
     volumes:
