@@ -9,7 +9,7 @@ services:
       - mongodb
     environment:
       TOKEN: ${TOKEN}
-      STATUS: DEVELOPMENT
+      STATUS: ${STATUS}
       GUILD_ID: 973562496763953200
       MONGODB_URI: mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongodb:27017/${MONGO_INITDB_DATABASE}?authSource=admin
     restart: always
