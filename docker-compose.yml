@@ -8,10 +8,10 @@ services:
     depends_on:
       - mongodb
     environment:
-      TOKEN: 
+      TOKEN: ${TOKEN}
       STATUS: DEVELOPMENT
       GUILD_ID: 973562496763953200
-      MONGODB_URI: mongodb://admin:root@mongodb:27017/bookmark?authSource=admin
+      MONGODB_URI: mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongodb:27017/${MONGO_INITDB_DATABASE}?authSource=admin
     restart: always
     networks:
       - bookmark_network
@@ -21,8 +21,8 @@ services:
       #   Credentials bellow are used to login to the database, 
       #   if you change these make sure to also update the link up above
       #   (mongodb://admin:root@mongodb:27017/bookmark?authSource=admin)
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
       MONGO_INITDB_DATABASE: bookmark
     image: "mongo:latest"
     restart: always
